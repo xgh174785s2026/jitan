@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>农家鸡鸭摊</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+      background: #faf7f2;
+      color: #1f1f1f;
+      line-height: 1.6;
+      padding-bottom: 80px;
+    }
+    .banner {
+      background: linear-gradient(135deg, #8B4513, #D2691E);
+      color: white;
+      text-align: center;
+      padding: 40px 20px 30px;
+    }
+    .banner h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+    .banner p { font-size: 15px; opacity: 0.9; }
+    .banner .icon { font-size: 48px; margin-bottom: 10px; }
+    .container { padding: 16px; }
+    .section-title {
+      font-size: 18px; font-weight: 700; color: #5D4037;
+      margin: 20px 0 12px; padding-left: 10px;
+      border-left: 3px solid #D2691E;
+    }
+    .card {
+      background: white; border-radius: 12px; padding: 16px;
+      margin-bottom: 12px; box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    .card-row {
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .card-name { font-size: 17px; font-weight: 600; color: #1f1f1f; }
+    .card-desc { font-size: 13px; color: #888; margin-top: 4px; }
+    .card-price { font-size: 20px; font-weight: 700; color: #D2691E; }
+    .card-price small { font-size: 13px; font-weight: 400; }
+    .contact-card {
+      background: linear-gradient(135deg, #D2691E, #E8A87C);
+      color: white; border-radius: 12px; padding: 20px;
+      text-align: center; margin-bottom: 12px;
+    }
+    .contact-card .phone {
+      font-size: 28px; font-weight: 700; letter-spacing: 2px;
+      margin: 8px 0;
+    }
+    .contact-card .label { font-size: 14px; opacity: 0.9; }
+    .footer-note {
+      text-align: center; font-size: 12px; color: #aaa;
+      margin-top: 30px; padding: 0 20px;
+    }
+    .call-btn {
+      display: block; width: 100%; max-width: 300px; margin: 16px auto 0;
+      background: white; color: #D2691E; border: none; border-radius: 30px;
+      padding: 12px 0; font-size: 18px; font-weight: 700;
+      text-decoration: none; text-align: center;
+    }
+    .call-btn:hover { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+
+<div class="banner">
+  <div class="icon">🐔</div>
+  <h1>农家鸡鸭摊</h1>
+  <p>活禽现杀 · 新鲜直供 · 支持配送</p>
+</div>
+
+<div class="container">
+
+  <div class="card" style="background:#FFF8F0;">
+    <p style="font-size:14px;color:#666;">
+      本地农家自养，吃粮食虫子长大，不喂饲料。<br>
+      每天现杀，保证新鲜。量大提前一天说就行。
+    </p>
+  </div>
+
+  <div class="section-title">🐓 今日价格</div>
+
+  <div class="card">
+    <div class="card-row">
+      <div>
+        <div class="card-name">河南草鸡</div>
+        <div class="card-desc">肉质紧实，适合白切/清蒸</div>
+      </div>
+      <div class="card-price">26 <small>元/斤</small></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-row">
+      <div>
+        <div class="card-name">童子鸡</div>
+        <div class="card-desc">肉质嫩滑，适合爆炒/油炸</div>
+      </div>
+      <div class="card-price">20 <small>元/斤</small></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-row">
+      <div>
+        <div class="card-name">本地草鸡</div>
+        <div class="card-desc">本地散养，味道鲜香</div>
+      </div>
+      <div class="card-price">18 <small>元/斤</small></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-row">
+      <div>
+        <div class="card-name">雪山草鸡</div>
+        <div class="card-desc">山地放养，肉质更紧</div>
+      </div>
+      <div class="card-price">20 <small>元/斤</small></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-row">
+      <div>
+        <div class="card-name">老鸭</div>
+        <div class="card-desc">炖汤首选，滋补去火</div>
+      </div>
+      <div class="card-price">23 <small>元/斤</small></div>
+    </div>
+  </div>
+
+  <div class="section-title">📞 下单联系</div>
+
+  <div class="contact-card">
+    <div class="label">📱 电话 / 微信</div>
+    <div class="phone">13402552134</div>
+    <a href="tel:13402552134" class="call-btn">📞 点我打电话</a>
+  </div>
+
+  <div class="card">
+    <div style="font-size:15px;font-weight:600;color:#5D4037;margin-bottom:8px;">
+      📍 摊位地址
+    </div>
+    <p style="font-size:14px;color:#666;">
+      永林新村73幢南幢一底商铺
+    </p>
+  </div>
+
+  <div class="card">
+    <div style="font-size:15px;font-weight:600;color:#5D4037;margin-bottom:8px;">
+      🚚 配送说明
+    </div>
+    <p style="font-size:14px;color:#666;">
+      • 就近可送货上门<br>
+      • 量大提前一天预定<br>
+      • 长期合作可议价
+    </p>
+  </div>
+
+  <div class="footer-note">
+    现宰现卖 · 建议提前半天预定
+  </div>
+
+</div>
+
+</body>
+</html>
