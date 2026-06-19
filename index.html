@@ -8,7 +8,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
-      background: #faf7f2; color: #1f1f1f; line-height: 1.6; padding-bottom: 80px;
+      background: #faf7f2; color: #1f1f1f; line-height: 1.6; padding-bottom: 60px;
     }
     .banner {
       background: linear-gradient(135deg, #8B4513, #D2691E);
@@ -32,47 +32,22 @@
     }
     .intro-card p { font-size: 14px; color: #666; line-height: 1.8; }
     .intro-card strong { color: #5D4037; }
-
-    /* 商品列表 */
-    .order-item {
-      display: flex; justify-content: space-between; align-items: center; padding: 4px 0;
+    .price-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 0; border-bottom: 1px solid #f5f5f5;
     }
-    .item-info { flex: 1; }
-    .item-name { font-size: 16px; font-weight: 600; color: #1f1f1f; }
-    .item-price { font-size: 12px; color: #D2691E; margin-top: 2px; font-weight: 600; }
-    .qty-control { display: flex; align-items: center; gap: 10px; }
-    .qty-btn {
-      width: 32px; height: 32px; border-radius: 50%; border: 1px solid #ddd;
-      background: white; font-size: 18px; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; color: #5D4037; user-select: none;
+    .price-row:last-child { border-bottom: none; }
+    .price-name { font-size: 16px; font-weight: 600; color: #1f1f1f; }
+    .price-desc { font-size: 12px; color: #888; margin-top: 2px; }
+    .price-val { font-size: 18px; font-weight: 700; color: #D2691E; }
+    .price-val small { font-size: 12px; font-weight: 400; }
+    .btn-order {
+      width: 100%; padding: 16px; background: #D2691E; color: white;
+      border: none; border-radius: 10px; font-size: 20px; font-weight: 700;
+      cursor: pointer; text-decoration: none; display: block; text-align: center;
     }
-    .qty-btn:active { background: #f0f0f0; }
-    .qty-num { font-size: 18px; font-weight: 700; width: 22px; text-align: center; }
-
-    .form-input {
-      width: 100%; padding: 11px; border: 1px solid #ddd; border-radius: 8px;
-      font-size: 15px; margin-bottom: 8px;
-    }
-    .form-input:focus { outline: none; border-color: #D2691E; }
-    .btn-orange {
-      width: 100%; padding: 14px; background: #D2691E; color: white;
-      border: none; border-radius: 10px; font-size: 18px; font-weight: 700;
-      cursor: pointer; margin-top: 6px;
-    }
-    .btn-orange:active { background: #B85E1A; }
-    .btn-green {
-      width: 100%; padding: 14px; background: #22A852; color: white;
-      border: none; border-radius: 10px; font-size: 18px; font-weight: 700;
-      cursor: pointer; margin-top: 6px;
-    }
-    .total-bar {
-      font-size: 16px; font-weight: 700; color: #5D4037;
-      padding: 10px 0 0; text-align: right;
-    }
-    .total-bar span { color: #D2691E; font-size: 20px; }
-
-    /* 联系方式卡 */
+    .btn-order:active { background: #B85E1A; }
+    .btn-order small { font-size: 13px; font-weight: 400; display: block; margin-top: 4px; }
     .contact-card {
       background: linear-gradient(135deg, #D2691E, #E8A87C);
       color: white; border-radius: 10px; padding: 16px; text-align: center; margin: 10px 0;
@@ -84,28 +59,15 @@
       border: none; border-radius: 30px; padding: 10px 30px;
       font-size: 16px; font-weight: 700; text-decoration: none; margin-top: 8px;
     }
-    .info-line { font-size: 13px; color: #888; padding: 3px 0; }
-
-    /* 下单成功弹窗 */
-    .modal-overlay {
-      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5);
-      z-index: 999; justify-content: center; align-items: center; padding: 20px;
+    .step-box {
+      display: flex; align-items: flex-start; gap: 12px; padding: 8px 0;
     }
-    .modal-overlay.show { display: flex; }
-    .modal-box {
-      background: white; border-radius: 16px; padding: 24px; max-width: 400px; width: 100%;
-      text-align: center;
+    .step-num {
+      width: 28px; height: 28px; border-radius: 50%; background: #D2691E;
+      color: white; text-align: center; line-height: 28px; font-size: 14px; font-weight: 700;
+      flex-shrink: 0;
     }
-    .modal-box h2 { font-size: 20px; color: #22A852; margin: 8px 0; }
-    .modal-box .order-detail {
-      background: #FFF8F0; border-radius: 10px; padding: 14px; margin: 12px 0;
-      text-align: left; font-size: 14px; line-height: 1.8;
-    }
-    .modal-box .tip { font-size: 13px; color: #888; margin-top: 8px; }
-    .close-btn {
-      width: 100%; padding: 12px; background: #D2691E; color: white;
-      border: none; border-radius: 10px; font-size: 16px; font-weight: 700; cursor: pointer;
-    }
+    .step-txt { font-size: 14px; color: #555; padding-top: 4px; }
   </style>
 </head>
 <body>
@@ -121,83 +83,67 @@
   <!-- 介绍 -->
   <div class="intro-card">
     <p>
-      <strong>自家养的土鸡土鸭</strong>，吃粮食虫子长大，<strong>绝对不喂饲料</strong>。<br>
+      <strong>自家养的土鸡土鸭</strong>，吃粮食虫子长大，<strong>绝不喂饲料</strong>。<br>
       每天凌晨宰杀，<strong>当天新鲜现卖</strong>。<br>
       量大提前一天说就行，附近可送货上门 🛵
     </p>
   </div>
 
-  <!-- 今日价格 + 下单 -->
-  <div class="section-title">🐓 今日价格 · 在线下单</div>
-
-  <div class="card" id="orderSection">
-    <div class="order-item">
-      <div class="item-info">
-        <div class="item-name">河南草鸡</div>
-        <div class="item-price">26 元/斤 · 肉质紧实</div>
-      </div>
-      <div class="qty-control">
-        <button class="qty-btn" onclick="cq('henan',-1)">−</button>
-        <span class="qty-num" id="qh">0</span>
-        <button class="qty-btn" onclick="cq('henan',1)">+</button>
-      </div>
+  <!-- 价格表 -->
+  <div class="section-title">🐓 今日价格</div>
+  <div class="card">
+    <div class="price-row">
+      <div><div class="price-name">河南草鸡</div><div class="price-desc">肉质紧实，适合白切/清蒸</div></div>
+      <div class="price-val">26 <small>元/斤</small></div>
     </div>
-    <div class="order-item">
-      <div class="item-info">
-        <div class="item-name">童子鸡</div>
-        <div class="item-price">20 元/斤 · 肉质嫩滑</div>
-      </div>
-      <div class="qty-control">
-        <button class="qty-btn" onclick="cq('tongzi',-1)">−</button>
-        <span class="qty-num" id="qt">0</span>
-        <button class="qty-btn" onclick="cq('tongzi',1)">+</button>
-      </div>
+    <div class="price-row">
+      <div><div class="price-name">童子鸡</div><div class="price-desc">肉质嫩滑，适合爆炒/油炸</div></div>
+      <div class="price-val">20 <small>元/斤</small></div>
     </div>
-    <div class="order-item">
-      <div class="item-info">
-        <div class="item-name">本地草鸡</div>
-        <div class="item-price">18 元/斤 · 本地散养</div>
-      </div>
-      <div class="qty-control">
-        <button class="qty-btn" onclick="cq('bendi',-1)">−</button>
-        <span class="qty-num" id="qb">0</span>
-        <button class="qty-btn" onclick="cq('bendi',1)">+</button>
-      </div>
+    <div class="price-row">
+      <div><div class="price-name">本地草鸡</div><div class="price-desc">本地散养，味道鲜香</div></div>
+      <div class="price-val">18 <small>元/斤</small></div>
     </div>
-    <div class="order-item">
-      <div class="item-info">
-        <div class="item-name">雪山草鸡</div>
-        <div class="item-price">20 元/斤 · 山地放养</div>
-      </div>
-      <div class="qty-control">
-        <button class="qty-btn" onclick="cq('xueshan',-1)">−</button>
-        <span class="qty-num" id="qx">0</span>
-        <button class="qty-btn" onclick="cq('xueshan',1)">+</button>
-      </div>
+    <div class="price-row">
+      <div><div class="price-name">雪山草鸡</div><div class="price-desc">山地放养，肉质更紧</div></div>
+      <div class="price-val">20 <small>元/斤</small></div>
     </div>
-    <div class="order-item">
-      <div class="item-info">
-        <div class="item-name">老鸭</div>
-        <div class="item-price">23 元/斤 · 炖汤首选</div>
-      </div>
-      <div class="qty-control">
-        <button class="qty-btn" onclick="cq('laoya',-1)">−</button>
-        <span class="qty-num" id="ql">0</span>
-        <button class="qty-btn" onclick="cq('laoya',1)">+</button>
-      </div>
+    <div class="price-row">
+      <div><div class="price-name">老鸭</div><div class="price-desc">炖汤首选，滋补去火</div></div>
+      <div class="price-val">23 <small>元/斤</small></div>
     </div>
-
-    <div class="total-bar">合计：<span id="total">0</span> 元</div>
   </div>
 
-  <!-- 填信息 -->
-  <div class="section-title">📝 你的信息</div>
-  <div class="card">
-    <input class="form-input" id="cname" placeholder="怎么称呼你" style="margin-bottom:6px">
-    <input class="form-input" id="cphone" placeholder="手机号（老板联系你用）" type="tel" style="margin-bottom:6px">
-    <input class="form-input" id="caddr" placeholder="送货地址（选填）">
-    <div class="info-line" style="margin-bottom:8px;">* 提交后老板会给你打电话确认</div>
-    <button class="btn-orange" onclick="doOrder()">📋 提交订单</button>
+  <!-- 下单按钮 -->
+  <div class="section-title">📝 在线下单</div>
+  <div class="card" style="text-align:center;padding:18px;">
+    <p style="font-size:14px;color:#666;margin-bottom:12px;">
+      点击下面按钮，填好信息提交即可<br>
+      <strong>老板看到订单后会电话联系你</strong>
+    </p>
+    <a href="https://zrx14zgr.jsjform.com/f/NPFDz7" target="_blank" class="btn-order">
+      📋 去下单
+      <small>选择商品 · 填写信息 · 提交订单</small>
+    </a>
+  </div>
+
+  <!-- 下单流程 -->
+  <div class="card" style="background:#FFF8F0;">
+    <div style="font-size:15px;font-weight:600;color:#5D4037;margin-bottom:6px;">
+      📌 下单流程
+    </div>
+    <div class="step-box">
+      <div class="step-num">1</div>
+      <div class="step-txt">点击上方"去下单"按钮</div>
+    </div>
+    <div class="step-box">
+      <div class="step-num">2</div>
+      <div class="step-txt">选择商品、填好联系信息和地址</div>
+    </div>
+    <div class="step-box">
+      <div class="step-num">3</div>
+      <div class="step-txt">提交订单，老板收到后会电话联系你</div>
+    </div>
   </div>
 
   <!-- 联系方式 -->
@@ -222,43 +168,5 @@
 
 </div>
 
-<!-- 下单成功弹窗 -->
-<div class="modal-overlay" id="modal">
-  <div class="modal-box">
-    <div style="font-size:48px;">✅</div>
-    <h2>订单已提交！</h2>
-    <div class="order-detail" id="orderText"></div>
-    <div class="tip">
-      请保持手机畅通，老板会尽快联系你确认订单
-    </div>
-    <button class="close-btn" onclick="closeModal()">知道了</button>
-  </div>
-</div>
-
-<script>
-  const p = { henan:26, tongzi:20, bendi:18, xueshan:20, laoya:23 };
-  const n = { henan:"河南草鸡", tongzi:"童子鸡", bendi:"本地草鸡", xueshan:"雪山草鸡", laoya:"老鸭" };
-  const q = { henan:0, tongzi:0, bendi:0, xueshan:0, laoya:0 };
-
-  function cq(k,d) { q[k]=Math.max(0,q[k]+d); document.getElementById('q'+k[0]).textContent=q[k]; calc(); }
-  function calc() { let t=0; for(let k in q) t+=q[k]*p[k]; document.getElementById('total').textContent=t; }
-
-  function doOrder() {
-    let name=document.getElementById('cname').value.trim();
-    let phone=document.getElementById('cphone').value.trim();
-    if(!name||!phone){alert('请填写称呼和手机号');return;}
-    let s='';
-    let t=0, has=false;
-    for(let k in q){if(q[k]>0){s+='  '+n[k]+' x '+q[k]+' 斤 = '+q[k]*p[k]+'元\\n';t+=q[k]*p[k];has=true;}}
-    if(!has){alert('请选择商品');return;}
-    let addr=document.getElementById('caddr').value.trim();
-    let full='🛵 顾客：'+name+'\n📞 电话：'+phone+(addr?'\n📍 地址：'+addr:'')+'\n\n📋 商品清单：\n'+s+'\n💰 合计：'+t+'元\n\n⏰ 提交时间：'+new Date().toLocaleString();
-    document.getElementById('orderText').textContent=full;
-    document.getElementById('modal').classList.add('show');
-  }
-  function closeModal(){document.getElementById('modal').classList.remove('show');}
-</script>
-
 </body>
 </html>
-
